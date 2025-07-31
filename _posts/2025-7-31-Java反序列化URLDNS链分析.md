@@ -19,7 +19,7 @@ extMath: true
 
 `java --add-opens java.base/java.net=ALL-UNNAMED  -jar deswing.jar`
 
-![image.png](image%201.png)
+![image.png](image1.png)
 
 写一段反序列化代码,这里就用之前写的
 
@@ -42,11 +42,11 @@ public class Ser {
 }
 ```
 
-![image.png](image%202.png)
+![image.png](image2.png)
 
 运行后：
 
-![image.png](image%203.png)
+![image.png](image3.png)
 
 ## 分析
 
@@ -170,7 +170,7 @@ HashMap.readObject()
 
 调用链从`HashMap.readObject()` 开始，看一下
 
-![image.png](image%204.png)
+![image.png](image4.png)
 
 主要在截屏的这一段，因为`HashMap`中的键和值都是对象，所以要反序列化一个`map`就要恢复里面的键和值
 
@@ -178,7 +178,7 @@ HashMap.readObject()
 
 `HashMap.hash()` 
 
-![image.png](image%205.png)
+![image.png](image5.png)
 
 就是`key`不为空的话就会调用反序列化对象的`hashCode()`，下面看一下`URL`的`hashCode()`
 
@@ -186,11 +186,11 @@ HashMap.readObject()
 
 先看URL.hashCode()
 
-![image.png](image%206.png)
+![image.png](image6.png)
 
 `hashler.hashCode()`
 
-![image.png](image%207.png)
+![image.png](image7.png)
 
 显然是在保证`hashCode`等于`-1`时调用`hashler.hashCode()`达到目的
 
@@ -243,7 +243,7 @@ public class Ser {
 
 这里为什么一开始不让`hashCode=-1`，是因为往`map`里面放的时候也会计算`hash`
 
-![image.png](image%208.png)
+![image.png](image8.png)
 
 如果不这样那生成`.bin`文件时就会发起`DNS`请求
 
