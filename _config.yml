@@ -6,7 +6,7 @@ plugins:
 # SEO相关信息
 title: Mathieu Blog
 description: Mathieu的个人博客
-keywords: Mathieu,Blog,Java,Html,JavaScript
+keywords: Mathieu,Blog,Java,反序列化,JavaSec,漏洞分析
 author: Mathieu
 footerText: 'Copyright © 2025'
 
@@ -60,5 +60,6 @@ extCount: true
 # links:
 #   - title: name
 #     url: 
+
 
 
